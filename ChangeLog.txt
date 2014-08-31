@@ -1,0 +1,108 @@
+25 Jun 2007      detpdb-1.0
+
+    Build system improvements:
+
+    * Compiled with Microsoft Visual C++ 2005, Debugging Tools SDK 6.7.5.0 and
+      IDA Pro SDK 5.1
+    * Build a 32-bit and 64-bit version of the plugin
+    * Link with the static version of the libc library
+
+    Interface improvements:
+
+    * The plugin can be disabled with the -Opdb:off option on the command line
+    * The symbol path and options can be set in detpdb.cfg
+
+    Algorithm improvements:
+
+    * Support for 64-bit binaries (thanks to Matt Conover)
+    * Load the VC type library for all files with symbols
+    * Create structures for GUID variables
+    * Ignore leading underscores of GUID variables
+
+    Bugfixes:
+
+    * Apply multiple names at the same address in alphabetical order instead of
+      randomly
+    * Fixed a refcount bug in the DbgHelp constructor
+    * Added a __cdecl specifier to the Sym::compare function used by qsort
+    * Fixed memory corruption bug due to lack of a copy constructor (thanks to
+      Ilfak Guilfanov)
+    * Don't rely on wchar_t being 16 bits
+
+14 Jun 2006     detpdb-0.4
+
+    * Released at Recon
+
+    Build system improvements:
+    
+    * Compiled with Microsoft Visual C++ 8.0, Debugging Tools SDK 6.6 and
+      IDA Pro SDK 5.0
+    * Enabled optimization and removal of unreferenced functions
+
+    GUI improvements:
+
+    * Print the address in the beginning of warnings and error messages,
+      allowing you to jump to the error location by clicking on the line
+    * Both ASCII and Unicode strings are shown as type "String" in the GUI
+    * GUIDs are created as four dwords instead of 16 bytes because they take
+      less space on the screen
+
+    Algorithm improvements:
+
+    * Apply symbols in multiple passes
+    * More accurate detection of string types (ASCII and UNICODE)
+    * Existing names are renamed to avoid name clashes
+    * Undefine tail bytes if they prevent the creation of a symbol name
+    * Truncate names to the maximum length supported by IDA (currently 512)
+    * Check for enough space before creating data symbols
+
+    Bugfixes:
+
+    * Fixed creation of doubles and GUIDs, don't leave their bytes undefined
+    * Added a prototype for Symbols::~Symbols
+    * Disabled the macro redefinition warning for dbghelp.h
+
+13 Apr 2006     detpdb-0.3
+
+    * Internal release
+
+    GUI improvements:
+
+    * Changed hotkey to Ctrl-4 to avoid clash with BinDiff 2.0 alphas
+    * More detailed error message for unknown symbol types
+
+    Algorithm improvements:
+
+    * Added detection and creation of GUID variables
+    * Detect demangled names that are the same as the mangled ones
+    * Handle imports in the text segment that look like functions
+    * Undefine existing bytes before creating new data items
+    * Disabled function creation during vtable processing, it was causing
+      problems with function chunking
+
+4 Apr 2006      detpdb-0.2
+
+    * Released at CanSecWest
+
+    GUI improvements:
+      
+    * Show symbol types and icons in the chooser window
+    * Sort the symbols in the chooser window by the address
+
+    Algorithm improvements:
+
+    * Turned off SYMOPT_ALLOW_ABSOLUTE_SYMBOLS
+    * Added special handling for functions, imports, real literals and vtables
+    * Apply the symbols starting from the end of the file and going up. This
+      improves the function chunking significantly.
+
+    Bugfixes:
+
+    * Disabled warnings for the IDA SDK header files
+    * Fixed a bug in the return value of DbgHelp::SymFunctionTableAccess64
+
+12 Mar 2006     detpdb-0.1
+
+    * Uses the same algorithm as the PDB plugin in IDA 4.9 SP
+    * Compiled with Microsoft Visual C++ 7.1, Debugging Tools SDK 6.6 and
+      IDA Pro SDK 4.9 SP
