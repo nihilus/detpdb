@@ -6,7 +6,7 @@
 
 VERSION  := 1.0
 
-IDASDK   := ../../idasdk51
+IDASDK   := ../../idasdk
 IDALIB32 := $(IDASDK)/libvc.w32/ida.lib
 IDALIB64 := $(IDASDK)/libvc.w64/ida.lib
 IDAINC   := $(IDASDK)/include
@@ -16,7 +16,7 @@ DBGSDK   := C:/Program Files/Debugging Tools for Windows/sdk
 DBGINC   := $(DBGSDK)/inc
 DBGLIB   := $(DBGSDK)/lib/i386/dbghelp.lib
 
-IDADIR   := /c/Program\ Files/IDA
+IDADIR   := /C/Hex-Rays.IDA.Pro.Advanced.v6.5/ida
 
 
 #
