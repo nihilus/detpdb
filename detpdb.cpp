@@ -47,6 +47,7 @@
 
 #include <ida.hpp>
 #include <idp.hpp>
+#include <auto.hpp>
 #include <loader.hpp>
 #include <name.hpp>
 #include <demangle.hpp>
